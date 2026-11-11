@@ -1,0 +1,15 @@
+using sysbus
+
+# 1. Creating the emulated machine
+mach create
+machine LoadPlatformDescription @tools/renode/nucleo_h563zi.repl
+
+# 2. Loading the compiled Zephyr ELF file
+sysbus LoadELF @build/zephyr/zephyr.elf
+
+# 3. Opening a graphical LED viewer
+showAnalyzer usart3
+logLevel -1 sysbus.gpiob.greenled1
+
+# 4. Starting the emulation
+start

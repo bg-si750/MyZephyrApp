@@ -1,6 +1,6 @@
 
 
-.PHONY: help native qemu clean
+.PHONY: help native qemu clean hw
 
 help:
 	@echo "Usage: make <target>"
@@ -8,6 +8,7 @@ help:
 	@echo "  native - build for native simulator"
 	@echo "  qemu   - build for QEMU x86"
 	@echo "  clean  - remove build artifacts"
+	@echo "  hw     - build for hardware"
 
 clean:
 	@rm -rf build
@@ -17,4 +18,7 @@ native:
 
 qemu:
 	@west build -b qemu_x86 .
+
+hw:
+	@west build -b nucleo_h563zi .	
 
